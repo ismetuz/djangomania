@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
-from todo.models import Todo, Category, Tag
+from todo.models import Todo, TodoCategory, TodoTag
 # from django.http import HttpResponse, Http404
 
     # todos = Todo.objects.filter(
@@ -30,7 +30,7 @@ def todo_detail_view(request,id,category_slug):
 
 @login_required(login_url='/admin/login/')
 def category_view(request, category_slug):
-    category = get_object_or_404(Category, slug=category_slug)
+    category = get_object_or_404(TodoCategory, slug=category_slug)
     todos= Todo.objects.filter(
         is_active=True,
         category=category,
@@ -44,7 +44,7 @@ def category_view(request, category_slug):
 
 @login_required(login_url='/admin/login/')
 def tag_view(request,tag_slug):
-    tag = get_object_or_404(Tag, slug=tag_slug)
+    tag = get_object_or_404(TodoTag, slug=tag_slug)
     context = dict(
         todos=tag.todo_set.filter( user=request.user ),
         tag = tag,
