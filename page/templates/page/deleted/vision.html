@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Vizyonumuz {% endblock title %}
+
+{% block container-fluid %}
+  <div class="container-fluid mb-4">
+    <!-- Hero Content -->
+   {% include 'page/components/hero_components.html' with hero_title=page_title %} 
+  </div>
+  {% endblock container-fluid %}
+  
+  {% block content %}
+  
+    {{ detail|safe}}
+
+  {% endblock %}
+

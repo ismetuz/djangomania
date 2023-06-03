@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+
+{% block title %} {{ page_title }} {% endblock title %}
+
+
+{% block container-fluid %}
+<div class="container-fluid mb-4">
+    <!-- Hero Content -->
+    {% include 'page/components/hero_components.html' with hero_title=page_title %}
+</div>
+{% endblock container-fluid %}
+
+{% block container %}
+
+    <div class="container">
+        <form class="row g-3">
+            <div class="col-sm-12">
+                <label for="inputEmail4" class="form-label">Email Adresinizi Giriniz</label>
+                <input type="email" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-sm-12">
+                <label for="exampleFormControlTextarea1" class="form-label">Açıklama</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            <div class="col-sm-12">
+                <label for="inputState" class="form-label">Bize Nasıl Ulaştınız?</label>
+                <select id="inputState" class="form-select">
+                    <option selected>Seçiniz</option>
+                    <option>Sosyal Medya</option>
+                    <option>Google</option>
+                    <option>Referans</option>
+                    <option>Arkadaş Tavsiyesi</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Hero Content END-->
+
+ {% endblock container %}

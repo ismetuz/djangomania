@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% block title %} {{ page_title }} {% endblock title %}
+
+
+{% block container %}
+
+<!--Özelliklke wtih kullanmak için fake_db_carousel i carousel olarak değiştirdik-->
+{% include 'page/components/home_carousel_components.html' with CAROUSEL=FAKE_DB_CAROUSEL %}
+
+<div class="container-fluid mb-4">
+    <!-- Hero Content -->
+    {% include 'page/components/hero_components.html' with hero_title=page_title %}
+</div>
+<div class="container">
+  <!-- Product -->
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h2>Ürünler</h2>
+      <hr>
+    </div>
+    <div class="col-sm-4 mb-1">
+      <div class="card">
+        <img src="https://picsum.photos/id/88/400/250" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Ürün 1</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="btn btn-primary">İncele</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 mb-1">
+      <div class="card">
+        <img src="https://picsum.photos/id/66/400/250" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Ürün 2</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="btn btn-primary">İncele</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 mb-1">
+      <div class="card">
+        <img src="https://picsum.photos/id/77/400/250" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Ürün 3</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="btn btn-primary">İncele</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+{% endblock container %}
