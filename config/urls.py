@@ -15,8 +15,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
+
+#My Views:
+from config.view import logout_view
+from page.views import index_view
+
 
 urlpatterns = [
+    path("", index_view, name="index_view"),
+    #Page:
+    path('page/', include('page.urls', namespace='page',)),
+    #Todo App:
+    path('todo/', include('todo.urls', namespace='todo',)),
+    #TinyMCE
+    path('tinymce/', include('tinymce.urls')),
+    #Auth:
+    path('account/logout/', logout_view, name='logout_view'),
+    #Admin:
     path('admin/', admin.site.urls),
-]
+]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

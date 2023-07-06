@@ -6,11 +6,11 @@ from todo.models import Todo, TodoCategory, TodoTag
     # todos = Todo.objects.filter(
     #     is_active=True,
     #     title__icontains ='todo'  #burada title içinde todo olanları da filtreledik
-    #     )
+    #     ) 
     # Hem is_active olacak hemde title içinde todo yazacak
     # eğer bir metnin içinde küçük büyük harf duyarlılığı olmadan bir kelime harf arayacaksak title__icontains='todo' 
 @login_required(login_url='/admin/login/')
-def home_view(request):
+def all_todos_view(request):
     todos = Todo.objects.filter(is_active=True, user= request.user)
     context = dict(
         todos=todos

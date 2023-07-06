@@ -5,21 +5,30 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="/">Anasayfa</a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Kategoriler
+              Todo Kategoriler
             </a>
             <ul class="dropdown-menu">
-              {% for category in global_categories %}
+              {% for category in global_todo_categories %}
               <li>
                 <a class="dropdown-item" href="{{ category.get_absolute_url }}">{{ category.title }}</a>
               </li>          
               {% endfor %}
             </ul>
+           {% for page in global_pages %}
+           <li class="nav_item">
+            <a class="nav-link " aria-current="page" href="{{ page.get_absolute_url }}">{{ page.title }}</a>
           </li>
+           {% endfor %} 
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav_item">
           <a class="nav-link " aria-current="page" href={% url 'logout_view' %}>Oturumu Kapat</a>
+        </li>
+        {% endif %}
         </div>
       </div>
     </div>

@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-n&y^ufi$1x&)iw#uxbkht!-^vgy0%_u=oqtja@7r5x8&fe%$$d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    '192.168.113.232'
+]
 
 
 # Application definition
@@ -41,11 +44,14 @@ BASE_APPS = [
 ]
 
 THIRD_APPS = [
+    'tinymce'
 
 ]
 
 MY_APPS = [
-    'todo'
+    'todo',
+    'page',
+    'blog',
 ]
 
 
@@ -66,7 +72,9 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates',
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,6 +82,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'config.global_context_processors.global_todo_categories_context',
+                'config.global_context_processors.global_page_context',
             ],
         },
     },
@@ -128,6 +138,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static_files",
+]
+
+MEDIA_URL = 'media/'
+
+MEDIA_ROOT = BASE_DIR / 'media_files'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

@@ -1,14 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
-from .fake_db.pages import FAKE_DB_PAGES
+from page.models import Page
 
 
 
-# Create your views here.
-
-# FAKE_DB_PROJECT = [
-#     f"https://picsum.photos/id/{id}/400/250" for id in range(71,79)
-#     ] 
 
 FAKE_DB_CAROUSEL = [
     f"https://picsum.photos/id/{id}/1200/200" for id in range(24,28)
@@ -25,16 +20,11 @@ def index_view(request):
 
 
 
-def page_view(request, slug):
-    result = list(filter(lambda x: (x['url'] == slug), FAKE_DB_PAGES))
-    context = dict()
-        # FAKE_DB_PROJECT = FAKE_DB_PROJECT,
-    if result:
-        context = dict(
-            page_title = result[0]["title"],
-            # FAKE_DB_PROJECT = FAKE_DB_PROJECT,
-            detail = result[0]["detail"]
-            )
-        return render(request, "page/page_detail.html", context)
-    raise Http404("Sayfa Bulunamadı")
+def page_view(request, page_slug):
+    page = get_object_or_404(Page, slug=page_slug)
+    context = dict(
+        page=page,
+    )
+    return render(request, "page/page_detail.html", context)
+
 
