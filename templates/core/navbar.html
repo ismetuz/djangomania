@@ -24,6 +24,10 @@
           </li>
            {% endfor %} 
           </li>
+          <li class="nav_item">
+            <a class="nav-link " aria-current="page" href={% url 'blog:all_post_view' %}>Blog</a>
+          </li>
+
           {% if request.user.is_authenticated %}
           <li class="nav_item">
           <a class="nav-link " aria-current="page" href={% url 'logout_view' %}>Oturumu Kapat</a>
